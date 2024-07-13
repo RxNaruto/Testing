@@ -11,4 +11,9 @@ describe("POST /sum",()=>{
         expect(res.statusCode).toBe(200);
         expect(res.body.ans).toBe(3);
     })
+    it("should return 411 if no inputs are provided", async () => {
+        const res = await request(app).post("/sum").send({});
+        expect(res.statusCode).toBe(411);
+        expect(res.body.message).toBe("Incorrect inputs");
+      });
 })
