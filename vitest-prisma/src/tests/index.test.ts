@@ -4,9 +4,8 @@ import { app } from "../index";
 import { prismaClient } from "../db";
 
 
-vi.mock("../db",()=>({
-    prismaClient: {sum: {create: vi.fn()}}
-}))
+vi.mock("../db")
+    
 describe("POST /sum",()=>{
     it("should return the sum of numbers",async()=>{
         const res = await request(app).post("/sum").send({
